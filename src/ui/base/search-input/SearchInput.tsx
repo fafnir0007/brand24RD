@@ -1,14 +1,17 @@
-import { TextInput, TextInputProps, ActionIcon, useMantineTheme } from '@mantine/core';
+import { TextInput, ActionIcon, useMantineTheme } from '@mantine/core';
 import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons-react';
+import {setSearch} from '@/redux/slices/search'
+import {useAppDispatch} from '@/redux/hooks'
 
 
+const SearchInput = () => {
+  const dispatch = useAppDispatch()
+  const theme = useMantineTheme()
 
-interface SearchProps {
-  handleOnSearch: React.ChangeEventHandler<HTMLInputElement>;
-}
+  const handleOnSearch = (e:any) =>{
+    dispatch(setSearch(e.target.value))
+  }
 
-const SearchInput = ({handleOnSearch}: SearchProps) => {
-  const theme = useMantineTheme();
   return (
     <TextInput
       onChange={handleOnSearch}

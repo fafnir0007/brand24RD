@@ -91,10 +91,9 @@ const useStyles = createStyles((theme) => ({
 
 interface HeaderTabsProps {
   user: { name: string; image: string };
-  handleOnSearch: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const Header =({ user, handleOnSearch }: HeaderTabsProps) => {
+const Header =({ user,}: HeaderTabsProps) => {
   const { classes, theme } = useStyles();
   const [opened, { toggle }] = useDisclosure(false);
 
@@ -102,7 +101,7 @@ const Header =({ user, handleOnSearch }: HeaderTabsProps) => {
     <div className={classes.header}>
       <Container className={classes.mainSection}>
         <Group position="apart">
-          <SearchInput handleOnSearch={handleOnSearch}/>
+          <SearchInput />
 
           <Burger
             opened={opened}

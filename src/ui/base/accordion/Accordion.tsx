@@ -42,8 +42,8 @@ interface CustomAccordion {
  
 
 const CustomAccordion = ({data, highlight}: CustomAccordion) => {
-  const items = data?.slice(0,20).map((item) => {
-    return <Accordion.Item value={item.title} key={item.id}>
+  const items = data.map((item,index) => {
+    return <Accordion.Item value={item.title} key={`${index}-${item.newspaper}`}>
       <Accordion.Control>
         <AccordionLabel {...item} highlight={highlight} />
       </Accordion.Control>
