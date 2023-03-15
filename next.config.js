@@ -10,7 +10,7 @@ module.exports = {
       },
       {
         source: '/directus',
-        destination: 'https://meilisearch.willy.im', // TODO: add direcuts URL
+        destination: 'https://directus.willy.im',
       }
     ]
   },
