@@ -1,4 +1,4 @@
-import { Window } from "happy-dom"
+import { Window } from "happy-dom";
 
 export const getDocumentDomElement = (html: string) => {
   const window = new Window({
@@ -12,10 +12,10 @@ export const getDocumentDomElement = (html: string) => {
       disableIframePageLoading: true,
       enableFileSystemHttpRequests: false,
     },
-  })
+  });
 
-  const document = window.document
-  document.write(html)
+  const document = window.document;
+  document.write(html);
 
-  return document
-}
+  return document;
+};

@@ -2,7 +2,6 @@ import z from "zod";
 
 import { endpoint, required } from "@brand24/common";
 import Parser from "rss-parser";
-import { directus } from "./lib/directus";
 
 import { OnlyArticleUrlSchema, PlainArticleSchema } from "./schemas";
 
@@ -61,20 +60,10 @@ export const handleRSS = endpoint(
   },
   async ({ body }) => {
     const parser = new Parser();
-
-    const secret = await directus.getKVItem("directus_secret_value");
     const since = body.since ? new Date(body.since) : undefined;
 
     const result: z.infer<typeof responseSchema>["result"] = [];
     const errors: z.infer<typeof responseSchema>["errors"] = [];
-
-    if (secret !== body.secret) {
-      return {
-        body: {
-          result: [],
-        },
-      };
-    }
 
     for (const feed of body.feeds) {
       // TODO: make this in a way that we only parse fields that are present
@@ -162,7 +151,3 @@ export const handleRSS = endpoint(
     return { body: { result, errors } };
   }
 );
-
-export const config = {
-  runtime: "nodejs",
-};
