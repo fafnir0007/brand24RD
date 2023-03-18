@@ -41,7 +41,7 @@ export function parseArticleHtml(html: string): PlainArticle {
   // ldArticle.publicationDate is in a weird format: 2023-03-09T00:01:00-04:00, so lets use this
   const publicationDate = document.querySelector(
     'meta[name="ArticlePublicationDate"]'
-  ).content;
+  ).textContent;
 
   const plainArticle = {
     title: ldArticle["headline"].replace("- Diario Libre", "").trim(),

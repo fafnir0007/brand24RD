@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "npm test --workspaces"
+    "test": "npm test --workspaces",
+    "typecheck": "tsc -b  ."
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
