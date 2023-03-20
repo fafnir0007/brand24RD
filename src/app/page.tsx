@@ -36,7 +36,7 @@ export default function Home() {
         <SideBar data={sideBar} />
         <div style={{ width: '100%' }}>
           <Header user={user}/>
-          {/* {isLoading ? null : <AccordionLabel highlight={search} data={articles}/> } */}
+          {isLoading ? null : <AccordionLabel highlight={search} data={articles}/> }
         </div>
       </div>
     </main>
