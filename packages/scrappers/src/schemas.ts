@@ -40,9 +40,4 @@ export const PlainArticleSchema = z.object({
   raw: z.object({}).optional(),
 });
 
-export const OnlyArticleUrlSchema = z.object({
-  url: z.string(),
-});
-
 export type PlainArticle = z.infer<typeof PlainArticleSchema>;
-export type OnlyArticleUrl = z.infer<typeof OnlyArticleUrlSchema>;

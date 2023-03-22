@@ -1,6 +1,7 @@
-import { endpoint } from "@brand24/common";
+import { endpoint, required } from "@brand24/common";
 import { z } from "zod";
 import { getDocumentDomElement } from "./lib/htmlParser";
+import { FeedErrorSchema, parseFeed } from "./lib/parseRssFeeds";
 import { PlainArticle, PlainArticleSchema } from "./schemas";
 
 export const handleDiarioLibre = endpoint(
@@ -11,11 +12,18 @@ export const handleDiarioLibre = endpoint(
     }),
     responseSchema: z.object({
       articles: z.array(PlainArticleSchema),
+      errors: z.array(FeedErrorSchema).optional(),
     }),
   },
   async ({ body }) => {
+    const parsedRssFeed = await parseFeed("diario_libre", body.urls, (item) => {
+      return { parsed: item.link };
+    });
+
     const htmls = await Promise.allSettled(
-      body.urls.map((url) => fetch(url).then((res) => res.text()))
+      parsedRssFeed.results
+        .filter((url) => url)
+        .map((url) => fetch(required(url)).then((res) => res.text()))
     );
 
     const articles = htmls
@@ -24,7 +32,7 @@ export const handleDiarioLibre = endpoint(
       )
       .flat();
 
-    return { body: { articles } };
+    return { body: { articles, errors: parsedRssFeed.errors } };
   }
 );
 
