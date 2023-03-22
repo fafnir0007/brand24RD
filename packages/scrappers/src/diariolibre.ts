@@ -2,7 +2,7 @@ import { endpoint, required } from "@brand24/common";
 import { z } from "zod";
 import { getDocumentDomElement } from "./lib/htmlParser";
 import { FeedErrorSchema, parseFeed } from "./lib/parseRssFeeds";
-import { PlainArticle, PlainArticleSchema } from "./schemas";
+import { PlainArticleSchema } from "./schemas";
 
 export const handleDiarioLibre = endpoint(
   {
@@ -36,7 +36,7 @@ export const handleDiarioLibre = endpoint(
   }
 );
 
-export function parseArticleHtml(html: string): PlainArticle {
+export function parseArticleHtml(html: string) {
   const document = getDocumentDomElement(html);
 
   const ldJSON = document.querySelector('script[type="application/ld+json"]');
@@ -47,15 +47,20 @@ export function parseArticleHtml(html: string): PlainArticle {
   );
 
   // ldArticle.publicationDate is in a weird format: 2023-03-09T00:01:00-04:00, so lets use this
-  const publicationDate = document
-    .querySelector('meta[name="ArticlePublicationDate"]')
-    .getAttribute("content");
+  const publicationDate = document.querySelector(
+    'meta[name="ArticlePublicationDate"]'
+  );
+
+  // TODO: log errors
+  if (!ldArticle || !publicationDate) {
+    return [];
+  }
 
   const plainArticle = {
     title: ldArticle["headline"].replace("- Diario Libre", "").trim(),
     author: ldArticle["author"]["name"],
     url: ldArticle["mainEntityOfPage"]["@id"],
-    publication_date: publicationDate,
+    publication_date: publicationDate?.getAttribute("content") ?? null,
     content: ldArticle["articleBody"]
       ?.replace(/[\u0000-\u001F\u007F-\u009F]/g, "")
       .replace(/\s+/g, " ")
