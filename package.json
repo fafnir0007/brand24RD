@@ -12,6 +12,8 @@
     "typecheck": "tsc -b  ."
   },
   "dependencies": {
+    "@brand24/common": "^0.1.0",
+    "@brand24/scrappers": "^0.1.0",
     "@emotion/react": "^11.10.6",
     "@emotion/server": "^11.10.0",
     "@mantine/core": "^6.0.1",
