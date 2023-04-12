@@ -20,14 +20,14 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GH_TOKEN }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       -
         name: Build and push
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: fafnir0007/brand24:latest
+          tags: ghcr.io/fafnir0007/brand24:latest
           secrets: |
             GIT_AUTH_TOKEN=${{ secrets.GH_TOKEN }}
