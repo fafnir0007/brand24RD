@@ -44,8 +44,6 @@ export const handleRSS = endpoint(
     const result: z.infer<typeof responseSchema>["result"] = [];
     const errors: FeedError[] = [];
 
-    const rssItems: PlainArticle[] = [];
-
     for (const feed of body.feeds) {
       // TODO: make this in a way that we only parse fields that are present
       const fields = {
@@ -69,11 +67,16 @@ export const handleRSS = endpoint(
             )
           );
 
+          // TODO: this is specific to listinDiario
+          const fallbackDate = url.pathname.split("/").slice(2, -2).join("-");
+          const fallbackDateString = `${fallbackDate}T00:00:00.000Z`;
+
           const rssItem = {
             title: item[fields.title],
             author: item[fields.author],
             url: url.toString(),
-            publication_date: item[fields.publicationDate],
+            publication_date:
+              item[fields.publicationDate] ?? fallbackDateString,
             content: item[fields.content],
             tags: item[fields.categories],
           };
