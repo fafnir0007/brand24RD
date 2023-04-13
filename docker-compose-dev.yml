@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  brand24:
+    container_name: brand24
+    build: .
+    environment:
+      - CF_ACCESS_CLIENT_ID
+      - CF_ACCESS_CLIENT_SECRET
+      - DIRECTUS_TOKEN
+      - DIRECTUS_URL
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
