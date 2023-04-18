@@ -1,12 +1,9 @@
 'use client';
-import SideBar from '@/ui/components/sidebar/Sidebar';
-import sideBar from '@/utils/mock/sideBar';
-import Header from '@/ui/components/header/Header';
-import user from '@/utils/mock/header';
 import {
   getDirectusNewsPaperArticle,
   getMilisearchNewsPaperArticle,
 } from '@/utils/api/newspaper_articles'
+import LayoutWrapper from '@/ui/components/layout-wrapper/LayoutWrapper';
 import AccordionLabel from '@/ui/base/accordion/Accordion'
 import {useAppSelector, useAppDispatch} from '@/redux/hooks'
 import {addArticles} from '@/redux/slices/articles'
@@ -32,13 +29,7 @@ export default function Home() {
 
   return (
     <main>
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <SideBar data={sideBar} />
-        <div style={{ width: '100%' }}>
-          <Header user={user}/>
-          {isLoading ? null : <AccordionLabel highlight={search} data={articles}/> }
-        </div>
-      </div>
+        {isLoading ? null : <AccordionLabel highlight={search} data={articles}/> }
     </main>
   )
 }

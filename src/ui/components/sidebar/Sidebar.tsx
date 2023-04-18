@@ -5,6 +5,7 @@ import {
   IconLogout,
 } from '@tabler/icons-react';
 import { MantineLogo } from '@mantine/ds';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   mainHeader:{
@@ -74,18 +75,17 @@ interface SideBarProps {
   const [active, setActive] = useState('Billing');
 
   const links = data.map((item) => (
-    <a
+    <Link
       className={cx(classes.link, { [classes.linkActive]: item.label === active })}
       href={item.link}
       key={item.label}
-      onClick={(event) => {
-        event.preventDefault();
+      onClick={() => {
         setActive(item.label);
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
       <span>{item.label}</span>
-    </a>
+    </Link>
   ));
 
   return (
