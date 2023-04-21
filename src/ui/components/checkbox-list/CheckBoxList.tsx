@@ -1,9 +1,9 @@
 import CheckboxBase from '@/ui/base/checkbox/Checkbox'
 
 type List = {
-    id: string,
     label: string,
-    checked: boolean
+    checked: boolean,
+    id: number
 }
 
 type CheckboxListProps = {
@@ -14,12 +14,12 @@ type CheckboxListProps = {
 const CheckboxList = ({list, onChangeCheckBox}: CheckboxListProps) => {
     return (
     <>
-        {list.map(({id,label,checked})=>
+        {list.map(({label},index)=>
             <CheckboxBase
-                key={id}
-                id={id} 
-                // isChecked={checked}
+                key={index}
+                id={index} 
                 label={label} 
+                isChecked={false}
                 disabled={false} 
                 onChangeCheckBox={onChangeCheckBox}
             />

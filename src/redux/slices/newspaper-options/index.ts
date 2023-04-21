@@ -12,7 +12,7 @@ export const newsPaperOptions = createSlice({
     initialState,
     reducers:{
         updateNewsPaperOptions: (state, action) => {
-            state[action.payload - 1].checked = !state[action.payload-1].checked 
+            state[action.payload ].checked = !state[action.payload].checked 
         }
     }
 })

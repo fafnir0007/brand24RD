@@ -27,7 +27,7 @@ export default function Home() {
       onSuccess: data => dispatch(addArticles(data))
     }
   )
-  // console.log(newsPaperCheckBoxList)
+  console.log(newsPaperCheckBoxList)
 
   return (
     <main>

@@ -2,20 +2,20 @@ import {useState} from 'react'
 import { Checkbox } from '@mantine/core';
 
 type CheckboxProps = {
-    id: string,
+    id: number,
     label: string,
     disabled: boolean,
-    // isChecked: boolean,
+    isChecked: boolean,
     onChangeCheckBox:  any //#TODO change to correct type
 }
 
-const CheckboxBase = ({id, label, disabled, onChangeCheckBox, ...props}: CheckboxProps) => {
+const CheckboxBase = ({id, label, disabled, isChecked, onChangeCheckBox, ...props}: CheckboxProps) => {
 
     const checkBoxColor = 'indigo'
-    // const [checked, setChecked] = useState(isChecked);
+    const [checked, setChecked] = useState(isChecked);
 
     const handleChecked = (label:string) => () : void => {
-        // setChecked(!checked)
+        setChecked(!checked)
         onChangeCheckBox(id)
     }
     
@@ -23,7 +23,7 @@ const CheckboxBase = ({id, label, disabled, onChangeCheckBox, ...props}: Checkbo
     <Checkbox
       label={label}
       color={checkBoxColor}
-    //   checked={checked}
+      checked={checked}
       disabled={disabled}
       onChange={handleChecked(label)}
       {...props}
