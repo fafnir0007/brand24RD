@@ -27,9 +27,11 @@ export default function Home() {
       onSuccess: data => dispatch(addArticles(data))
     }
   )
+  // console.log(newsPaperCheckBoxList)
 
   return (
     <main>
+      <CheckboxList onChangeCheckBox={(value)=>{dispatch(updateNewsPaperOptions(value))}} list={newsPaperCheckBoxList} />
         {isLoading ? null : <AccordionLabel highlight={search} data={articles}/> }
     </main>
   )

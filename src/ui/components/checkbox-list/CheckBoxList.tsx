@@ -18,7 +18,7 @@ const CheckboxList = ({list, onChangeCheckBox}: CheckboxListProps) => {
             <CheckboxBase
                 key={id}
                 id={id} 
-                isChecked={checked}
+                // isChecked={checked}
                 label={label} 
                 disabled={false} 
                 onChangeCheckBox={onChangeCheckBox}

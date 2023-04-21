@@ -1,17 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = [
-        {id:'listin_diario', label:'Listin Diario', checked:false},
-        {id:'diario_libre', label:'Diario Libre', checked: false}
+        {id:1, label:'Listin Diario', checked:false},
+        {id:2, label:'Diario Libre', checked: false}
 ]
+
+
 
 export const newsPaperOptions = createSlice({
     name: 'news_paper_options',
     initialState,
     reducers:{
         updateNewsPaperOptions: (state, action) => {
-            console.log(action,'state')
-            state = action.payload
+            state[action.payload - 1].checked = !state[action.payload-1].checked 
         }
     }
 })
