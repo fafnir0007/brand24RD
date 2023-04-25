@@ -2,10 +2,10 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = [
         {id:1, label:'Listin Diario', checked:false},
-        {id:2, label:'Diario Libre', checked: false}
+        {id:2, label:'Diario Libre', checked: false},
+        {id:3, label:'El Nacional', checked: false},
+        {id:2, label:'Hoy', checked: false}
 ]
-
-
 
 export const newsPaperOptions = createSlice({
     name: 'news_paper_options',

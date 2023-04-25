@@ -10,6 +10,8 @@ import {updateNewsPaperOptions} from '@/redux/slices/newspaper-options'
 import {getArticlesSelector, getSearchSelector, getCheckBoxNewsPaperListSelector} from '@/redux/selectors'
 import { useQuery } from 'react-query'
 import CheckboxList from '@/ui/components/checkbox-list/CheckBoxList';
+import useStyles from './pageCss'
+
 export default function Home() {
   // Directus call
   // const {isLoading, data} = useQuery('items/newspaper_articles', getDirectusNewsPaperArticle)
@@ -29,10 +31,19 @@ export default function Home() {
   )
   console.log(newsPaperCheckBoxList)
 
+  const { classes } = useStyles();
+  
   return (
     <main>
-      <CheckboxList onChangeCheckBox={(value)=>{dispatch(updateNewsPaperOptions(value))}} list={newsPaperCheckBoxList} />
-        {isLoading ? null : <AccordionLabel highlight={search} data={articles}/> }
+      <div className={classes.root}>
+          <div className={classes.accordionSection}>
+            {isLoading ? null : <AccordionLabel highlight={search} data={articles}/> }
+          </div>
+          <div className={classes.checkBoxSection}>
+            <span className={classes.sideBartitle}>Periodicos</span>
+            <CheckboxList onChangeCheckBox={(value)=>{dispatch(updateNewsPaperOptions(value))}} list={newsPaperCheckBoxList} />
+        </div>
+      </div>
     </main>
   )
 }

@@ -12,6 +12,7 @@ type CheckboxListProps = {
 }
 
 const CheckboxList = ({list, onChangeCheckBox}: CheckboxListProps) => {
+
     return (
     <>
         {list.map(({label},index)=>
