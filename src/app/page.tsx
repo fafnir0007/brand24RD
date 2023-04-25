@@ -41,7 +41,7 @@ export default function Home() {
           </div>
           <div className={classes.checkBoxSection}>
             <span className={classes.sideBartitle}>Periodicos</span>
-            <CheckboxList onChangeCheckBox={(value)=>{dispatch(updateNewsPaperOptions(value))}} list={newsPaperCheckBoxList} />
+            <CheckboxList onChangeCheckBox={(value:number)=>{dispatch(updateNewsPaperOptions(value))}} list={newsPaperCheckBoxList} />
         </div>
       </div>
     </main>
