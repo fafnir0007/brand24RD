@@ -2,12 +2,13 @@ import {configureStore} from '@reduxjs/toolkit'
 import searchSlice from './slices/search'
 import articlesSlice from './slices/articles'
 import newspaperOptionsSlice from './slices/newspaper-options'
-
+import sentimentOptions from './slices/sentiment-options'
 export const store = configureStore({
     reducer:{
         search: searchSlice,
         article: articlesSlice,
-        newspaperOptions: newspaperOptionsSlice
+        newspaperOptions: newspaperOptionsSlice,
+        sentimentsOptions: sentimentOptions
     }
 })
 

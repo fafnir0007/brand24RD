@@ -12,19 +12,19 @@ import {
       borderLeftColor:'1px'
     },
     accordionSection:{
-      width:'68rem'
+      width:'100%'
     },
-    checkBoxSection:{
+    filterSideBarSection:{
       display:'flex',
       flexDirection:'column',
       width: '15rem',
       borderLeft: '0.0625rem solid #dee2e6',
-      paddingLeft:'1rem'
+      paddingLeft:'1rem',
+      paddingRight: '1rem'
 
     },
     sideBartitle:{
-      paddingBottom:'1rem',
       marginTop: '1rem'
     }
-    
+  
   }));
