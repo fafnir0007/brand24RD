@@ -1,14 +1,17 @@
-import {configureStore} from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import searchSlice from './slices/search'
 import articlesSlice from './slices/articles'
 import newspaperOptionsSlice from './slices/newspaper-options'
 import sentimentOptions from './slices/sentiment-options'
+import dateSlice from './slices/dates'
+
 export const store = configureStore({
-    reducer:{
+    reducer: {
         search: searchSlice,
         article: articlesSlice,
         newspaperOptions: newspaperOptionsSlice,
-        sentimentsOptions: sentimentOptions
+        sentimentsOptions: sentimentOptions,
+        dateFilter: dateSlice
     }
 })
 
