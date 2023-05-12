@@ -3,12 +3,12 @@ import { DirectusKV as DirectusKVSchema, env as envSchema } from "../schemas";
 
 const {
   DIRECTUS_TOKEN,
-  DIRECTUS_URL,
+  DIRECTUS_HOST,
   CF_ACCESS_CLIENT_ID,
   CF_ACCESS_CLIENT_SECRET,
 } = envSchema.parse(process.env);
 
-const directusSDK = new Directus(DIRECTUS_URL, {
+const directusSDK = new Directus(DIRECTUS_HOST, {
   auth: {
     staticToken: DIRECTUS_TOKEN,
   },

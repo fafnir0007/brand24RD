@@ -8,7 +8,9 @@ services:
       - CF_ACCESS_CLIENT_ID
       - CF_ACCESS_CLIENT_SECRET
       - DIRECTUS_TOKEN
-      - DIRECTUS_URL
+      - MEILISEARCH_HOST
+      - DIRECTUS_HOST
+      - NEXT_PUBLIC_MEILI_SEARCH_KEY
     ports:
       - "3000:3000"
     restart: unless-stopped

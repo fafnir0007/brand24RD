@@ -25,7 +25,7 @@ export const DirectusKV = z.object({
 
 export const env = z.object({
   DIRECTUS_TOKEN: z.string(),
-  DIRECTUS_URL: z.string(),
+  DIRECTUS_HOST: z.string(),
   CF_ACCESS_CLIENT_ID: z.string(),
   CF_ACCESS_CLIENT_SECRET: z.string(),
 });
